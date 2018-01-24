@@ -50,10 +50,14 @@ public class ArrayUtilsTest {
     }
 
     @Test
-    public void testGetValueFromArray(){
+    public void testGetValueFromArray() {
         Integer[] integers = getArrays(Integer.class);
         Object valueFromArray = ArrayUtils.getValueFromArray(integers);
         Assert.assertEquals(2, valueFromArray);
+    }
+
+    public void testArrays() {
+
     }
 
 }

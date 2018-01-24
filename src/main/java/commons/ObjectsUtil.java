@@ -1,5 +1,6 @@
 package commons;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import javax.management.Notification;
@@ -56,5 +57,21 @@ public class ObjectsUtil {
         Object result = Objects.requireNonNullElse(obj, obj2);
         System.out.println(result);
     }
+
+    /**
+     * 该方法用于测试两个同为null的对象是否相等
+     */
+    @Test
+    public void testCompareTwoNullObject() {
+        Object obj1 = null;
+        Object obj2 = null;
+        boolean equals = Objects.equals(obj1, obj2);
+        Assert.assertEquals(true, equals);
+
+        boolean deepEquals = Objects.deepEquals(obj1, obj2);
+        // 我以为是false....
+        Assert.assertEquals(true, deepEquals);
+    }
+
 
 }
