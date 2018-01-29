@@ -1,10 +1,7 @@
 package commons;
 
 import java.lang.reflect.Array;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -43,6 +40,27 @@ public class ArrayUtils {
             System.out.println("It's out of array's bound!");
         }
         return o;
+    }
+
+//    public static <T> T[] concat(T[]... arrays) {
+//        Objects.requireNonNull(arrays, "Concat arrays cannot be empty");
+//
+//    }
+
+    /**
+     * 用于获取List中的index的
+     *
+     * @param list
+     * @param index
+     * @param <T>
+     * @return
+     */
+    public static <T> T get(final List<T> list, final int index) {
+        if (Objects.isNull(list) || Objects.isNull(index)) {
+            return null;
+        }
+        T last = list.stream().limit(index + 1).collect(Collectors.toCollection(LinkedList::new)).getLast();
+        return last;
     }
 
 }

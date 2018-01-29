@@ -1,7 +1,9 @@
 package stream;
 
+import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.OptionalInt;
@@ -83,5 +85,45 @@ public class IntStream01 {
     public void testPeek() {
         IntStream stream = IntStream.of(1, 3, 4, 5, 6, 67, 76).peek(age -> System.out.println(age));
     }
+
+    @Test
+    public void testRange() {
+        IntStream.range(0, 100).forEach(e -> {
+            System.out.println(e);
+        });
+
+        //
+        IntStream.range(0, 10).forEach(System.out::println);
+    }
+
+    @Test
+    public void testPeek02() {
+        int sum = IntStream.of(1, 2, 3, 4)
+                .filter(e -> e > 2)
+                .peek(e -> System.out.println("Filtered value: " + e))
+                .map(e -> e * e)
+                .peek(e -> System.out.println("Mapped value: " + e))
+                .sum();
+        Assert.assertEquals(25, sum);
+    }
+
+    /**
+     * 问题: 给出一个字符串数组,找出其中以z开头以e结尾的. 另将不符合条件的也同时列出来
+     */
+    @Test
+    public void testPeek03() {
+        List<String> names = Arrays.asList("zhangsan", "zhangsi", "zhangwu", "zhangyue", "zhangliu", "zhangqi", "zhange");
+        List<String> disMatchNames = new ArrayList<>();
+        List<String> matchNames = names.stream().filter(name -> {
+            // 填写过滤条件
+            if (name.startsWith("z") && name.endsWith("e")) {
+                return true;
+            }
+            return false;
+        }).peek(name -> disMatchNames.add(name)).collect(Collectors.toList());
+
+        System.out.println(matchNames + "==>>" + disMatchNames);
+    }
+
 
 }

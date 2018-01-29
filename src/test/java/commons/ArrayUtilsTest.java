@@ -56,8 +56,11 @@ public class ArrayUtilsTest {
         Assert.assertEquals(2, valueFromArray);
     }
 
-    public void testArrays() {
-
+    @Test
+    public void testConcat() {
+        Integer[] integers = new Integer[]{1, 3, 45, 6, 7};
+        Integer[] ints = new Integer[]{5, 6, 7, 8, 9, 0};
+//        Integer[] concats = ArrayUtils.concat(integers, ints);
+//        System.out.println(concats);
     }
-
 }
