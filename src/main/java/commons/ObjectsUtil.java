@@ -52,11 +52,12 @@ public class ObjectsUtil {
         Objects.requireNonNull(obj2, "obj2 is null");
     }
 
-    @Test
-    public void testRequiredNonNullElse() {
-        Object result = Objects.requireNonNullElse(obj, obj2);
-        System.out.println(result);
-    }
+    // java9 or higher
+//    @Test
+//    public void testRequiredNonNullElse() {
+//        Object result = Objects.requireNonNullElse(obj, obj2);
+//        System.out.println(result);
+//    }
 
     /**
      * 该方法用于测试两个同为null的对象是否相等
